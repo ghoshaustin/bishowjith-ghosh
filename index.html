@@ -13,7 +13,7 @@
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            scroll-behavior: smooth;
+            scroll-behavior: smooth; /* For smooth scrolling */
         }
 
         /* Header */
@@ -25,17 +25,17 @@
         }
 
         header h1 {
-            font-size: 2.5em;
+            font-size: 2.5em; /* Default heading size for Bishowjith Ghosh */
             margin: 0;
         }
 
         .portfolio-title {
-            font-size: 1.5em;
+            font-size: 1.5em; /* Smaller size for Data Analyst Portfolio */
             margin: 0;
-            white-space: nowrap;
+            white-space: nowrap; /* Ensures that Data Analyst Portfolio stays on one line */
         }
 
-        /* Menu styles */
+        /* Menu styles (for desktop and larger screens) */
         nav {
             background-color: #34495E;
             color: white;
@@ -55,7 +55,7 @@
         }
 
         nav ul li {
-            margin: 0 15px;
+            margin: 0 15px; /* Default margin for desktop view */
         }
 
         nav ul li a {
@@ -69,6 +69,7 @@
 
         nav ul li a:hover {
             background-color: #2E8B57;
+            color: white;
             border-radius: 4px;
         }
 
@@ -111,7 +112,7 @@
         }
 
         .project-box a {
-            color: white;
+            color: white; /* Set text color to white by default */
             text-decoration: none;
             font-weight: bold;
         }
@@ -120,38 +121,23 @@
         .links {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 10px; /* Adds space between the buttons */
         }
 
         .project-link, .dashboard-link {
             display: inline-block;
             padding: 10px 20px;
             background-color: #2E8B57;
+            color: white; /* Make text white by default */
             text-decoration: none;
             border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s, color 0.3s;
+            font-weight: bold; /* Makes the text bold */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
         }
 
         .project-link:hover, .dashboard-link:hover {
-            background-color: #45a049;
-        }
-
-        /* Resume button */
-        .resume-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #2E8B57;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            margin-top: 10px;
-        }
-
-        .resume-button:hover {
-            background-color: #228B22;
+            background-color: #45a049; /* Lighter green on hover */
+            color: #ffffff; /* Keep text white on hover */
         }
 
         /* Contact styles */
@@ -179,18 +165,20 @@
 
         /* Media queries for responsiveness */
         @media (max-width: 768px) {
+            /* Adjustments for mobile view */
             nav ul {
-                justify-content: center;
-                overflow: hidden;
+                justify-content: center; /* Center items for mobile */
+                flex-wrap: nowrap; /* Ensure no wrapping */
+                overflow: hidden; /* Prevent overflow to the right */
             }
 
             nav ul li {
-                margin: 0px;
+                margin: 0px; /* Set margin to 0px between menu items */
             }
 
             nav ul li a {
-                font-size: 0.8em;
-                padding: 4px 8px;
+                font-size: 0.8em; /* Slightly smaller font size for mobile */
+                padding: 4px 8px; /* Slightly reduced padding for mobile */
             }
 
             .projects-container {
@@ -199,13 +187,13 @@
             }
 
             .project-box {
-                width: 90%;
+                width: 90%; /* Adjust width for mobile */
             }
 
             section {
                 padding-left: 10px;
                 padding-right: 10px;
-                max-width: 100%;
+                max-width: 100%; /* Prevent sections from having extra width */
             }
 
             .section-title {
@@ -222,50 +210,76 @@
         }
 
         @media (max-width: 480px) {
+            /* Further adjustments for smaller mobile devices */
             header h1 {
-                font-size: 2em;
+                font-size: 2em; /* Slightly smaller heading size */
             }
 
             .portfolio-title {
-                font-size: 1.2em;
+                font-size: 1.2em; /* Reduced size for Data Analyst Portfolio */
+                white-space: nowrap; /* Ensure it stays in one line */
             }
 
             nav ul li a {
-                font-size: 0.75em;
+                font-size: 0.75em; /* Further reduced font size */
             }
         }
     </style>
+    <script>
+        // Scroll Fix for Mobile Menu (applies only to mobile)
+        document.addEventListener("DOMContentLoaded", function() {
+            const links = document.querySelectorAll('nav ul li a');
+            const isMobile = window.innerWidth <= 768; // Detect if it's a mobile device
+            
+            if (isMobile) {
+                const offset = 70; // Adjust this value for how much offset you want (height of the menu)
+                
+                links.forEach(link => {
+                    link.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        const scrollPosition = targetElement.offsetTop - offset;
+
+                        window.scrollTo({
+                            top: scrollPosition,
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+            }
+        });
+    </script>
 </head>
 <body>
     <!-- Header -->
     <header>
         <h1>Bishowjith Ghosh</h1>
-        <h2 class="portfolio-title">Data Analyst - Portfolio</h2>
+        <h2 class="portfolio-title">Data Analyst - Portfolio</h2> <!-- Adjusted size for mobile -->
     </header>
 
     <!-- Navigation -->
     <nav>
         <ul>
-            <li><a href="#profile">Profile</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#profile">Profile</a></li> <!-- Changed "About Me" to "Profile" -->
+            <li><a href="#skills">Skills</a></li> <!-- Skills comes after Profile -->
+            <li><a href="#projects">Projects</a></li> <!-- Projects after Skills -->
+            <li><a href="#education">Education</a></li> <!-- Education after Projects -->
+            <li><a href="#contact">Contact</a></li> <!-- Contact last -->
         </ul>
     </nav>
 
     <!-- Profile Section -->
-    <section id="profile">
-        <div class="section-title">Profile</div>
+    <section id="profile"> <!-- Changed the ID from "about" to "profile" -->
+        <div class="section-title">Profile</div> <!-- Changed the title to "Profile" -->
         <p>
             Hello! I'm Bishowjith Ghosh, a dedicated Data Analyst with a strong foundation in data analysis, 
             visualization, and process optimization. I am passionate about turning raw data into actionable 
             insights that drive business growth. I have worked across multiple domains, including Banking, 
             E-commerce, and Retail, and am continuously expanding my expertise in Python, Tableau, MySQL, 
-            & ML. Currently pursuing a Master of Science in Data Science, with expected graduation in December 2024.
+            & ML. Currently pursuing a Master of Science in Data Science, with expected graduation in 
+            December 2024.
         </p>
-        <!-- Resume download button -->
-        <a href="path-to-your-resume.pdf" class="resume-button" download>Download Resume</a>
     </section>
 
     <!-- Skills Section -->
@@ -274,14 +288,106 @@
         <ul style="list-style-type: none;">
             <li><strong>Data Analysis:</strong> Data Mining, Cleaning, Wrangling, Modeling, Transformation, Integrity and Validation, Time Series Analysis, Exploratory Data Analysis (EDA)</li>
             <li><strong>Data Visualization:</strong> Tableau (Dashboards, Storytelling), Reporting</li>
-            <li><strong>Technical Skills:</strong> Python, Pandas, MySQL, Seaborn, NumPy, GitHub, Jupyter Notebook</li>
-            <li><strong>Machine Learning:</strong> supervised/unsupervised learning, Regression, Scikit-learn, Flask for ML deployment</li>
+            <li><strong>Technical Skills:</strong> Python, Pandas, MySQL, Seaborn, NumPy, GitHub, Jupyter Notebook, Colab, HTML, CSS (Web Design)</li>
+            <li><strong>Machine Learning:</strong> supervised/unsupervised learning, Regression, Scikit-learn , Flask for ML deployment</li>
             <li><strong>Office Tools:</strong> MS Office, Photoshop</li>
         </ul>
     </section>
 
-    <!-- Projects Section -->
-    <!-- Add your project section here -->
+   <!-- Projects Section -->
+<section id="projects">
+    <div class="section-title">My Projects</div>
+    <div class="projects-container">
+
+        <!-- Project 1 -->
+          <div class="project-box">
+            <h3>Customer Data Insights</h3>
+            <p>Focused on customer behavior and purchasing patterns, this dashboard highlights demographics, purchase frequency, and top customer insights.</p>
+            <div class="links">
+                <a href="https://github.com/ghoshaustin/My_Projects/blob/main/Tableau_Projects/Tableau_Superstore.pdf" class="project-link" target="_blank">View Project</a>
+                <a href="https://public.tableau.com/app/profile/bishowjith.ghosh/viz/CustomerDataAnalysis_17212545297280/Dashboard1?publish=yes" class="dashboard-link" target="_blank">View Dashboard</a>
+            </div>
+        </div>
+
+         <!-- Project 2 -->
+        <div class="project-box">
+            <h3>Retail Sales Insights</h3>
+            <p>Offers an overview of product category sales, customer segmentation, and shipping performance to improve operational efficiency in retail.</p>
+            <div class="links">
+                <a href="https://github.com/ghoshaustin/My_Projects/tree/main/Domain_Retail" class="project-link" target="_blank">View Project</a>
+                <a href="https://public.tableau.com/app/profile/bishowjith.ghosh/viz/Project_Retail_Sales_Insights/Dashboard1?publish=ye" class="dashboard-link" target="_blank">View Dashboard</a>
+            </div>
+        </div>
+        <!-- Project 3 -->
+        <div class="project-box">
+            <h3>Bank Customer Analysis</h3>
+            <p>Provides a detailed view of customer demographics, job classifications, and regional segmentation to help improve customer retention strategies.</p>
+            <div class="links">
+                <a href="https://github.com/ghoshaustin/My_Projects/tree/main/Domain_Banking" class="project-link" target="_blank">View Project</a>
+                <a href="https://public.tableau.com/app/profile/bishowjith.ghosh/viz/UKbankCustomer--01/Dashboard1?publish=yes" class="dashboard-link" target="_blank">View Dashboard</a>
+            </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-box">
+            <h3>E-commerce Sales Trends</h3>
+            <p>analyzes sales trends, customer segmentation, and product performance across various regions for optimizing e-commerce sales.</p>
+            <div class="links">
+                <a href="https://github.com/ghoshaustin/My_Projects/tree/main/Domain_E-commerce" class="project-link" target="_blank">View Project</a>
+                <a href="https://public.tableau.com/app/profile/bishowjith.ghosh/viz/Tableau_Olist/Dashboard1?publish=yes" class="dashboard-link" target="_blank">View Dashboard</a>
+            </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-box">
+            <h3>EDA Python ( Sports & Sales Analysis ) </h3>
+            <p> Sports and Sales data Analysis, focusing mostly on data cleaning , preprocessing </p>
+            <div class="links">
+                <a href="https://github.com/ghoshaustin/My_Projects/tree/main/Python_Projects" class="project-link" target="_blank">View Project</a>
+                <a href="https://github.com/ghoshaustin/My_Projects/tree/main/Python_Projects" class="dashboard-link" target="_blank">View PDF</a>
+            </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-box">
+            <h3> Machine Learning ( Under Processing ) </h3>
+            <p> Working on Machine Learning Projects. Yet to post content. </p>
+            <div class="links">
+                <a href="">View Project</a>
+                <a href="">View Dashboard</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+    <!-- Education & Certifications Section -->
+    <section id="education">
+        <div class="section-title">Education & Certifications</div>
+        <ul style="list-style-type: none;">
+            <li><strong>Education:</strong> M.S. in Data Science, Birchwood University (Graduating December 2024)</li>
+            <li>B.S. in Chemistry, National University (2013)</li>
+            <li><strong>Certifications & Professional Development:</strong></li>
+            <li>CompTIA IT Fundamentals, austinfree.net, Austin, Texas — March 19, 2018</li>
+            <li>CompTIA A+ Complete Study Guide (Course & Labs), The Goodwill Academy — May 7, 2018</li>
+            <li>Diploma in Computer Science & ICT, SIT Foundation, Bangladesh — December 2010</li>
+            <li>Software Testing and Automation Course, NextTech ITC, Irving, TX — 2021</li>
+        </ul>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-title">Contact Me</div>
+        <p>
+            If you would like to connect or learn more about my work, feel free to reach out via email, GitHub, or LinkedIn.
+        </p>
+        <div class="contact-info">
+            <a href="mailto:ghosh.austin@gmail.com">Email Me</a> |
+            <a href="https://linkedin.com/in/bishowjith-ghosh-35867227b">LinkedIn</a> |
+            <a href="https://github.com/ghoshaustin">GitHub</a>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
